@@ -1,0 +1,261 @@
+
+import 'package:flutter/material.dart';
+import 'package:mymovie/core/constants/color.dart';
+
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+bool parolnikorish_ormaslik = false;
+
+class _RegisterState extends State<Register> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  String nameErrorMessage = '';
+  String surnameErrorMessage = '';
+  String phoneErrorMessage = '';
+  String emailErrorMessage = '';
+  String passwordErrorMessage = '';
+
+  double nameBorderRadius = 10.0;
+  double surnameBorderRadius = 10.0;
+  double phoneBorderRadius = 10.0;
+  double emailBorderRadius = 10.0;
+  double passwordBorderRadius = 10.0;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.AppBar,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: AppColors.Icon_Text),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ), body: Padding(
+      padding: EdgeInsets.all(15),
+      child: ListView(
+        children: <Widget>[
+          SizedBox(height: 30),
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10),
+            child: Text(
+              "Hisob ochish",
+              style: TextStyle(fontSize: 20,color: AppColors.Icon_Text),
+            ),
+          ),
+          SizedBox(height: 7),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: TextFormField(
+              controller: nameController,
+              cursorColor: AppColors.Icon_Text,
+              keyboardType: TextInputType.text,
+              style: TextStyle(color: AppColors.Icon_Text),
+              decoration: InputDecoration(
+                labelText: "Ism",
+                labelStyle: TextStyle(color: AppColors.Icon_Text),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(nameBorderRadius),
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                errorText:
+                nameErrorMessage.isNotEmpty ? nameErrorMessage : null,
+              ),
+            ),
+          ),
+          SizedBox(height: 7),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: TextFormField(
+              keyboardType: TextInputType.text,
+              style: TextStyle(color: AppColors.Icon_Text),
+              controller: surnameController,
+              cursorColor: AppColors.Icon_Text,
+              decoration: InputDecoration(
+                labelText: "Familya",
+                labelStyle: TextStyle(color: AppColors.Icon_Text),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(surnameBorderRadius),
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                errorText: surnameErrorMessage.isNotEmpty
+                    ? surnameErrorMessage
+                    : null,
+              ),
+            ),
+          ),
+          SizedBox(height: 7),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: TextFormField(
+              controller: phoneController,
+              cursorColor: AppColors.Icon_Text,
+              keyboardType: TextInputType.phone,
+              style: TextStyle(color: AppColors.Icon_Text),
+              decoration: InputDecoration(
+                counterStyle: TextStyle(color: AppColors.Icon_Text),
+                labelText: "Telefon raqam",
+                labelStyle: TextStyle(color: AppColors.Icon_Text),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(phoneBorderRadius),
+                  borderSide:
+                  BorderSide(color: AppColors.Icon_Text, width: 2.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.Icon_Text, width: 2.0),
+                ),
+                errorText:
+                phoneErrorMessage.isNotEmpty ? phoneErrorMessage : null,
+              ),
+              maxLength: 13,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: TextFormField(
+              controller: emailController,
+              cursorColor: AppColors.Icon_Text,
+              keyboardType: TextInputType.emailAddress,
+              style: TextStyle(color: AppColors.Icon_Text),              decoration: InputDecoration(
+                labelText: "Email",
+                labelStyle: TextStyle(color: AppColors.Icon_Text),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(emailBorderRadius),
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: AppColors.Icon_Text, width: 2.0),
+                ),
+                errorText:
+                emailErrorMessage.isNotEmpty ? emailErrorMessage : null,
+              ),
+            ),
+          ),
+          SizedBox(height: 7),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: TextFormField(
+              obscureText: !parolnikorish_ormaslik,
+              controller: passwordController,
+              cursorColor: AppColors.Icon_Text,
+              keyboardType: TextInputType.text,
+              style: TextStyle(color: AppColors.Icon_Text),
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    parolnikorish_ormaslik
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: AppColors.Icon_Text,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      parolnikorish_ormaslik = !parolnikorish_ormaslik;
+                    });
+                  },
+                ),
+                labelText: "Parol",
+                labelStyle: TextStyle(color: AppColors.Icon_Text),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(passwordBorderRadius),
+                  borderSide:
+                  BorderSide(color: AppColors.Icon_Text, width: 2.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.Icon_Text, width: 2.0),
+                ),
+                errorText: passwordErrorMessage.isNotEmpty
+                    ? passwordErrorMessage
+                    : null,
+              ),
+            ),
+          ),
+          SizedBox(height: 25),
+          Container(
+            height: 50,
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  AppColors.Icon_Text,
+                ),
+              ),
+              onPressed: () {
+                _validateAndSubmitForm();
+              },
+              child: Text("Ro'yhatdan o'tish"),
+            ),
+          ),
+        ],
+      ),
+    ),
+      backgroundColor: AppColors.BottomNavigationBar_backgroundColor,
+    );
+  }
+
+  void _validateAndSubmitForm() {
+    final name = nameController.text.trim();
+    final surname = surnameController.text.trim();
+    final phone = phoneController.text.trim();
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+
+    setState(() {
+      nameErrorMessage = name.isEmpty ? 'Iltimos Ismizni kiriting' : '';
+      surnameErrorMessage =
+      surname.isEmpty ? 'Iltimos, Familyangizni kiriting' : '';
+      if (phone.isEmpty) {
+        phoneErrorMessage = 'Iltimos telefon raqamni kiriting';
+      } else if (phone.length != 13 || !phone.startsWith('+998')) {
+        phoneErrorMessage = 'Telefon raqamni to\'liq kiriting (+998xxxxxxxxx)';
+      } else {
+        phoneErrorMessage = '';
+      }
+      emailErrorMessage = (email.isEmpty || !email.contains('@'))
+          ? 'Email hisobingizda @ belgisi yo\'q qaytadan tekshiring'
+          : '';
+      passwordErrorMessage =
+      password.isEmpty ? 'Iltimos parolingizni kiriting' : '';
+
+      // Reset border radii
+      nameBorderRadius = 10.0;
+      surnameBorderRadius = 10.0;
+      phoneBorderRadius = 10.0;
+      emailBorderRadius = 10.0;
+      passwordBorderRadius = 10.0;
+    });
+
+    if (nameErrorMessage.isEmpty &&
+        surnameErrorMessage.isEmpty &&
+        phoneErrorMessage.isEmpty &&
+        emailErrorMessage.isEmpty &&
+        passwordErrorMessage.isEmpty) {
+      // If all validations pass, call the registerUser function
+    }
+  }
+}
