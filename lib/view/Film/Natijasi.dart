@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:mymovie/core/constants/color.dart';
+import 'package:flutter/material.dart';
+
 
 class Natijasi extends StatelessWidget {
   const Natijasi({super.key});

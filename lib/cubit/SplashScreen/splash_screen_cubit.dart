@@ -14,7 +14,6 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
     await Future.delayed(Duration(seconds: 4));
     Navigator.of(context).pushReplacementNamed('/bottomnavigationbar');
 
-    // Check Root status
     bool? result = await Root.isRooted();
     bool _status = result ?? false;
     if (_status) {

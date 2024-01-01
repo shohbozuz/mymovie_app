@@ -1,10 +1,10 @@
-class Category {
+class category {
   int? id;
   String? categoryName;
 
-  Category({this.id, this.categoryName});
+  category({this.id, this.categoryName});
 
-  Category.fromJson(Map<String, dynamic> json) {
+  category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     categoryName = json['category_name'];
   }

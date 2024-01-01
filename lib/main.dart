@@ -1,14 +1,19 @@
-import 'package:mymovie/cubit/BottomNavigationBar/bottom_navigation_bar_cubit.dart';
-import 'package:mymovie/routes/router.dart';
+// main.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mymovie/cubit/BottomNavigationBar/bottom_navigation_bar_cubit.dart';
+import 'package:mymovie/routes/router.dart';
 
 void main() {
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<BottomNavigationBarCubit>(
-      create: (context) => BottomNavigationBarCubit(),
-    ),
-  ], child: MyApp()));
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<BottomNavigationBarCubit>(
+        create: (context) => BottomNavigationBarCubit(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,4 +28,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
